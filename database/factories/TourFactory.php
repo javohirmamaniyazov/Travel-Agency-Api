@@ -21,6 +21,10 @@ class TourFactory extends Factory
             'starting_date' => now(),
             'ending_date' => now()->addDays(rand(1, 10)),
             'price' => fake()->randomFloat(2, 10, 999),
+            'travel_id' => function () {
+                // Assuming you have a Travel model with an id column
+                return \App\Models\Travel::inRandomOrder()->first()->id;
+            },
         ];
     }
 }
