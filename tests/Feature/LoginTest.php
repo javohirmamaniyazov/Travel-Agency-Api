@@ -23,10 +23,8 @@ class LoginTest extends TestCase
             'password'=> 'password'
         ]);
 
-        $response->assertStatus(404)
-            ->assertJsonStructure([
-                'access_token'
-            ]);
+        $response->assertStatus(200);
+        $response->assertJsonStructure(['access_token']);
     }
 
     public function test_login_returns_error_with_invalid_credentials(): void
@@ -36,6 +34,6 @@ class LoginTest extends TestCase
             'password'=> 'password'
         ]);
 
-        $response->assertStatus(404);
+        $response->assertStatus(422);
     }
 }
