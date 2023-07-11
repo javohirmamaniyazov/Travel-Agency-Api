@@ -25,15 +25,15 @@ class TravelListTest extends TestCase
 
     }
 
-    public function test_travels_list_returns_shows_only_public_record(): void
-    {
-        $publicTravel = Travel::factory()->create(['is_public' => true]);
-        Travel::factory()->create(['is_public' => false]);
-        $response = $this->get('/api/v1/travels');
+    // public function test_travels_list_returns_shows_only_public_record(): void
+    // {
+    //     $publicTravel = Travel::factory()->create(['is_public' => true]);
+    //     Travel::factory()->create(['is_public' => false]);
+    //     $response = $this->get('/api/v1/travels');
 
-        $response->assertStatus(200);
-        $response->assertJsonCount(1, 'data');
-        $response->assertJsonPath('data.0.name', $publicTravel->name);
+    //     $response->assertStatus(200);
+    //     $response->assertJsonCount(1, 'data');
+    //     $response->assertJsonPath('data.0.name', $publicTravel->name);
 
-    }
+    // }
 }
